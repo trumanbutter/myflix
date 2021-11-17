@@ -4,15 +4,16 @@ import axios from 'axios';
 
 const API_KEY = '8fefea02';
 
-const MyFlixContext = React.createContext();
 const myFlixInitialState = {
 	searchString: '',
 	movieData: {
 		Search: []
 	},
-	movieDetail: {}
+	movieDetail: {},
+	error: ''
 }
 
+const MyFlixContext = React.createContext(myFlixInitialState);
 const pageCount = (totalResults) => { return Math.ceil(parseInt(totalResults / 10)) };
 
 const Provider = ({ children }) => {
@@ -83,7 +84,7 @@ const Provider = ({ children }) => {
 		currentPage
 	}
 
-	return <MyFlixContext.Provider value={{ ...contextValue }}>{children}</MyFlixContext.Provider>
+	return <MyFlixContext.Provider value={{...contextValue}}>{children}</MyFlixContext.Provider>
 }
 
 export { MyFlixContext, Provider, myFlixInitialState }

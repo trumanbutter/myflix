@@ -27,12 +27,12 @@ function App() {
         <Container maxWidth="xl">
           <Header />
           <SearchBar />
-          {state.movieData.Search && (
+          {(state && state.movieData && state.movieData.Search) && (
             <div id={"myflix-list-container"}>
               <MovieList />
             </div>
           )}
-          {state.error && (
+          {(state && state.error) && (
             <Alert severity="warning">{state.error}</Alert>
           )}
           <MovieDetail />
